@@ -1,0 +1,23 @@
+{
+  "chunk": "FD003:primary",
+  "frozen_sha256": "9773a00d847563e62336ef3c1b951bc9434a27ac57ed1ec33128d36b33950a32",
+  "config": {
+    "normalization": "global",
+    "baseline": "causal",
+    "window": 75,
+    "history": "pad_first",
+    "metric": "manhattan",
+    "weights": "distance",
+    "k": 75
+  },
+  "n_train_engines": 100,
+  "n_train_rows": 24720,
+  "n_test_engines": 100,
+  "n_regimes": 1,
+  "scratch_vs_sklearn_max_abs_diff": 0.0,
+  "predictions_sha256": "b9f5844a7ac703206765c492564be1aa4c5c815fda0c6f6e8ee5c791afe13250",
+  "labels_read": false,
+  "evaluation_number": 1,
+  "seconds": 4.0,
+  "completed_utc": "2026-11-19T22:52:23+00:00"
+}

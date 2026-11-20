@@ -1,0 +1,296 @@
+{
+  "selected by RMSE": {
+    "config": {
+      "normalization": "regime",
+      "baseline": "none",
+      "window": 75,
+      "history": "pad_first",
+      "metric": "euclidean",
+      "weights": "distance",
+      "k": 100
+    },
+    "per_fold": [
+      {
+        "fold": 0,
+        "n_eng": 420,
+        "rmse": 12.872745341175856,
+        "mae": 9.259114497215286,
+        "nasa": 2.996963727314682,
+        "saved_rmse": 12.872745341175856,
+        "saved_mae": 9.259114497215286,
+        "saved_nasa": 2.996963727314681,
+        "saved_n_eng": 420,
+        "abs_diff_rmse": 0.0,
+        "abs_diff_mae": 0.0,
+        "abs_diff_nasa": 8.881784197001252e-16
+      },
+      {
+        "fold": 1,
+        "n_eng": 420,
+        "rmse": 12.715114102135717,
+        "mae": 9.2853957403692,
+        "nasa": 2.888960167390267,
+        "saved_rmse": 12.715114102135717,
+        "saved_mae": 9.2853957403692,
+        "saved_nasa": 2.8889601673902656,
+        "saved_n_eng": 420,
+        "abs_diff_rmse": 0.0,
+        "abs_diff_mae": 0.0,
+        "abs_diff_nasa": 1.3322676295501878e-15
+      },
+      {
+        "fold": 2,
+        "n_eng": 420,
+        "rmse": 16.60018989311302,
+        "mae": 12.376550726460271,
+        "nasa": 5.581786814294882,
+        "saved_rmse": 16.60018989311302,
+        "saved_mae": 12.376550726460277,
+        "saved_nasa": 5.581786814294883,
+        "saved_n_eng": 420,
+        "abs_diff_rmse": 0.0,
+        "abs_diff_mae": 5.329070518200751e-15,
+        "abs_diff_nasa": 8.881784197001252e-16
+      },
+      {
+        "fold": 3,
+        "n_eng": 410,
+        "rmse": 14.823997719570695,
+        "mae": 10.891497760216273,
+        "nasa": 4.353273485680716,
+        "saved_rmse": 14.823997719570697,
+        "saved_mae": 10.891497760216271,
+        "saved_nasa": 4.353273485680712,
+        "saved_n_eng": 410,
+        "abs_diff_rmse": 1.7763568394002505e-15,
+        "abs_diff_mae": 1.7763568394002505e-15,
+        "abs_diff_nasa": 3.552713678800501e-15
+      },
+      {
+        "fold": 4,
+        "n_eng": 410,
+        "rmse": 13.188320649211214,
+        "mae": 9.714524027513024,
+        "nasa": 3.205846882327369,
+        "saved_rmse": 13.188320649211214,
+        "saved_mae": 9.714524027513024,
+        "saved_nasa": 3.2058468823273687,
+        "saved_n_eng": 410,
+        "abs_diff_rmse": 0.0,
+        "abs_diff_mae": 0.0,
+        "abs_diff_nasa": 4.440892098500626e-16
+      }
+    ],
+    "max_abs_diff": {
+      "rmse": 1.7763568394002505e-15,
+      "mae": 5.329070518200751e-15,
+      "nasa": 3.552713678800501e-15
+    },
+    "recomputed_mean_over_folds": {
+      "rmse": 14.0400735410413,
+      "mae": 10.30541655035481,
+      "nasa": 3.805366215401583
+    },
+    "saved_mean_over_folds": {
+      "rmse": 14.0400735410413,
+      "mae": 10.305416550354812,
+      "nasa": 3.8053662154015817
+    }
+  },
+  "selected by NASA": {
+    "config": {
+      "normalization": "regime",
+      "baseline": "none",
+      "window": 75,
+      "history": "pad_first",
+      "metric": "euclidean",
+      "weights": "distance",
+      "k": 150
+    },
+    "per_fold": [
+      {
+        "fold": 0,
+        "n_eng": 420,
+        "rmse": 13.006669593033802,
+        "mae": 9.492826585828984,
+        "nasa": 3.016171256459369,
+        "saved_rmse": 13.006669593033802,
+        "saved_mae": 9.492826585828984,
+        "saved_nasa": 3.016171256459369,
+        "saved_n_eng": 420,
+        "abs_diff_rmse": 0.0,
+        "abs_diff_mae": 0.0,
+        "abs_diff_nasa": 0.0
+      },
+      {
+        "fold": 1,
+        "n_eng": 420,
+        "rmse": 12.655703097082455,
+        "mae": 9.365247426576556,
+        "nasa": 2.820354670635649,
+        "saved_rmse": 12.655703097082457,
+        "saved_mae": 9.365247426576556,
+        "saved_nasa": 2.82035467063565,
+        "saved_n_eng": 420,
+        "abs_diff_rmse": 1.7763568394002505e-15,
+        "abs_diff_mae": 0.0,
+        "abs_diff_nasa": 1.3322676295501878e-15
+      },
+      {
+        "fold": 2,
+        "n_eng": 420,
+        "rmse": 16.53088326415811,
+        "mae": 12.46663294575287,
+        "nasa": 5.360539852482589,
+        "saved_rmse": 16.53088326415811,
+        "saved_mae": 12.466632945752872,
+        "saved_nasa": 5.360539852482593,
+        "saved_n_eng": 420,
+        "abs_diff_rmse": 0.0,
+        "abs_diff_mae": 1.7763568394002505e-15,
+        "abs_diff_nasa": 4.440892098500626e-15
+      },
+      {
+        "fold": 3,
+        "n_eng": 410,
+        "rmse": 14.925816194286705,
+        "mae": 11.15834169345528,
+        "nasa": 4.274961060209978,
+        "saved_rmse": 14.925816194286703,
+        "saved_mae": 11.15834169345528,
+        "saved_nasa": 4.27496106020998,
+        "saved_n_eng": 410,
+        "abs_diff_rmse": 1.7763568394002505e-15,
+        "abs_diff_mae": 0.0,
+        "abs_diff_nasa": 2.6645352591003757e-15
+      },
+      {
+        "fold": 4,
+        "n_eng": 410,
+        "rmse": 13.258373913813259,
+        "mae": 9.955763625875736,
+        "nasa": 3.2143758073785205,
+        "saved_rmse": 13.25837391381326,
+        "saved_mae": 9.955763625875736,
+        "saved_nasa": 3.214375807378516,
+        "saved_n_eng": 410,
+        "abs_diff_rmse": 1.7763568394002505e-15,
+        "abs_diff_mae": 0.0,
+        "abs_diff_nasa": 4.440892098500626e-15
+      }
+    ],
+    "max_abs_diff": {
+      "rmse": 1.7763568394002505e-15,
+      "mae": 1.7763568394002505e-15,
+      "nasa": 4.440892098500626e-15
+    },
+    "recomputed_mean_over_folds": {
+      "rmse": 14.075489212474867,
+      "mae": 10.487762455497883,
+      "nasa": 3.737280529433221
+    },
+    "saved_mean_over_folds": {
+      "rmse": 14.075489212474867,
+      "mae": 10.487762455497883,
+      "nasa": 3.737280529433222
+    }
+  },
+  "same config, raw-sensor scaling": {
+    "config": {
+      "normalization": "global",
+      "baseline": "none",
+      "window": 75,
+      "history": "pad_first",
+      "metric": "euclidean",
+      "weights": "distance",
+      "k": 100
+    },
+    "per_fold": [
+      {
+        "fold": 0,
+        "n_eng": 420,
+        "rmse": 30.58798942423371,
+        "mae": 25.151194645353392,
+        "nasa": 45.434915032561875,
+        "saved_rmse": 30.58798942423371,
+        "saved_mae": 25.151194645353392,
+        "saved_nasa": 45.43491503256187,
+        "saved_n_eng": 420,
+        "abs_diff_rmse": 0.0,
+        "abs_diff_mae": 0.0,
+        "abs_diff_nasa": 7.105427357601002e-15
+      },
+      {
+        "fold": 1,
+        "n_eng": 420,
+        "rmse": 30.395161949532923,
+        "mae": 24.5257701773503,
+        "nasa": 54.90500246448374,
+        "saved_rmse": 30.395161949532923,
+        "saved_mae": 24.5257701773503,
+        "saved_nasa": 54.9050024644838,
+        "saved_n_eng": 420,
+        "abs_diff_rmse": 0.0,
+        "abs_diff_mae": 0.0,
+        "abs_diff_nasa": 5.684341886080802e-14
+      },
+      {
+        "fold": 2,
+        "n_eng": 420,
+        "rmse": 29.571378245333307,
+        "mae": 24.39398749141865,
+        "nasa": 48.19708154411518,
+        "saved_rmse": 29.571378245333307,
+        "saved_mae": 24.393987491418653,
+        "saved_nasa": 48.19708154411524,
+        "saved_n_eng": 420,
+        "abs_diff_rmse": 0.0,
+        "abs_diff_mae": 3.552713678800501e-15,
+        "abs_diff_nasa": 6.394884621840902e-14
+      },
+      {
+        "fold": 3,
+        "n_eng": 410,
+        "rmse": 29.689919337800124,
+        "mae": 23.828317681751095,
+        "nasa": 56.72898900113105,
+        "saved_rmse": 29.689919337800124,
+        "saved_mae": 23.828317681751106,
+        "saved_nasa": 56.72898900113109,
+        "saved_n_eng": 410,
+        "abs_diff_rmse": 0.0,
+        "abs_diff_mae": 1.0658141036401503e-14,
+        "abs_diff_nasa": 4.263256414560601e-14
+      },
+      {
+        "fold": 4,
+        "n_eng": 410,
+        "rmse": 29.295751016162075,
+        "mae": 24.13246980432537,
+        "nasa": 37.143414074732775,
+        "saved_rmse": 29.295751016162075,
+        "saved_mae": 24.132469804325368,
+        "saved_nasa": 37.14341407473278,
+        "saved_n_eng": 410,
+        "abs_diff_rmse": 0.0,
+        "abs_diff_mae": 3.552713678800501e-15,
+        "abs_diff_nasa": 7.105427357601002e-15
+      }
+    ],
+    "max_abs_diff": {
+      "rmse": 0.0,
+      "mae": 1.0658141036401503e-14,
+      "nasa": 6.394884621840902e-14
+    },
+    "recomputed_mean_over_folds": {
+      "rmse": 29.908039994612427,
+      "mae": 24.40634796003976,
+      "nasa": 48.481880423404924
+    },
+    "saved_mean_over_folds": {
+      "rmse": 29.908039994612427,
+      "mae": 24.406347960039763,
+      "nasa": 48.48188042340495
+    }
+  }
+}

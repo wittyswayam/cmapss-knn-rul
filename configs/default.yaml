@@ -1,0 +1,113 @@
+# Central configuration. Paths are relative to the repository root.
+project:
+  seed: 42
+  log_level: INFO
+
+paths:
+  raw_data_dir: data/raw
+  figures_dir: figures
+  results_dir: results
+  models_dir: models
+  logs_dir: logs
+
+data:
+  archive_name: CMAPSSData.zip
+  # SHA-256 of the CMAPSSData.zip that this project was developed against.
+  archive_sha256: 74bef434a34db25c7bf72e668ea4cd52afe5f2cf8e44367c55a82bfd91a5a34f
+  # Expected structure of each subset, as observed in the archive during
+  # development. Note: the dataset readme lists FD004 as 248 train / 249 test
+  # engines, but the files contain 249 train / 248 test (readme has them swapped).
+  subsets:
+    FD001:
+      n_train_units: 100
+      n_test_units: 100
+      n_train_rows: 20631
+      n_test_rows: 13096
+      n_operating_conditions: 1
+      fault_modes: [HPC]
+    FD002:
+      n_train_units: 260
+      n_test_units: 259
+      n_train_rows: 53759
+      n_test_rows: 33991
+      n_operating_conditions: 6
+      fault_modes: [HPC]
+    FD003:
+      n_train_units: 100
+      n_test_units: 100
+      n_train_rows: 24720
+      n_test_rows: 16596
+      n_operating_conditions: 1
+      fault_modes: [HPC, Fan]
+    FD004:
+      n_train_units: 249
+      n_test_units: 248
+      n_train_rows: 61249
+      n_test_rows: 41214
+      n_operating_conditions: 6
+      fault_modes: [HPC, Fan]
+
+target:
+  # Conventional piecewise-linear RUL cap. Alternatives are evaluated only
+  # through training-data validation (later phase), never on the test set.
+  rul_cap: 125
+
+eda:
+  n_example_engines: 8
+  spike_window: 11            # centred rolling-median window for spike detection
+  spike_z_threshold: 5.0      # robust z-score threshold on detrended residuals
+  initial_window: 20          # early-life cycles used for unit-to-unit spread
+  high_correlation_threshold: 0.9
+
+# ----------------------------- Phase 2 -----------------------------------
+features:
+  stats: [mean, slope]        # per-sensor statistics computed over the trailing window
+  baseline_cycles: 20         # causal baseline = mean of the first (up to) 20 cycles seen so far
+
+validation:
+  n_folds: 5                  # grouped-by-engine cross-validation on the tuning engines
+  n_holdout_engines: 20       # engines never used for tuning; checked once at the end
+  eval_cutoffs_per_engine: 10 # engine-level evaluation: random truncation points per engine
+  eval_min_cutoff: 30         # earliest truncation point (cycles of history)
+  stress_cutoffs: [5, 10, 20] # short-history stress evaluation points
+
+grid:
+  sensor_configs: [A, B]      # A: drop constant sensors; B: also drop s6
+  baseline: [none, causal]
+  window: [10, 30, 50, 75, 100]
+  history: [adaptive, pad_first]
+  metric: [euclidean, manhattan]
+  weights: [uniform, distance]
+  k: [1, 3, 5, 10, 15, 20, 30, 50, 75, 100, 150, 200]
+
+# ----------------------------- Phase 3 -----------------------------------
+# Frozen before any Phase 3 result was inspected. The same grid is applied to all four subsets.
+phase3:
+  holdout_fraction: 0.2       # development holdout per subset (exploratory, see docs/EVALUATION_PROTOCOL.md)
+  window_eval_stride: 5       # window-level metrics use every 5th cycle (speed); selection uses engine-level points
+  grid:
+    baseline: [none, causal]
+    normalization: [global, regime]   # "regime" is only run on subsets where >1 operating regime is detected
+    window: [10, 30, 50, 75]
+    history: [adaptive, pad_first]
+    metric: [euclidean, manhattan]
+    weights: [uniform, distance]
+    k: [5, 10, 20, 30, 50, 75, 100, 150]
+  probe:                      # short-history robustness experiment
+    stages: {healthy_start: 0.0, mid_life_start: 0.5, late_life_start: 0.75}   # where in the engine's life observation starts
+    n_obs: [3, 5, 10, 20, 30]
+    window: [10, 30, 50, 75]
+    history: [adaptive, pad_first, pad_mean]
+    baseline: [none, causal]
+    metric: manhattan         # held fixed so only the history handling varies
+    weights: distance
+    k: 50
+
+# ----------------------- Phase 3 grid extension --------------------------
+# Decided by the project owner after reviewing Phase 3: the selected window (75) and k (150) of FD002/FD004 sat at the grid
+# boundary. Everything in phase3.grid is kept; only these values are added, for these subsets, and results go to
+# results/phase3_extended/ so the original Phase 3 outputs stay untouched.
+phase3_extension:
+  subsets: [FD002, FD004]
+  add_window: [100]
+  add_k: [200]

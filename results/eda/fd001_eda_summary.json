@@ -1,0 +1,142 @@
+{
+  "subset": "FD001",
+  "rul_cap": 125,
+  "shapes": {
+    "train": [
+      20631,
+      26
+    ],
+    "test": [
+      13096,
+      26
+    ],
+    "n_train_engines": 100,
+    "n_test_engines": 100
+  },
+  "train_lifetime": {
+    "count": 100,
+    "mean": 206.31,
+    "std": 46.3427492067573,
+    "min": 128.0,
+    "q25": 177.0,
+    "median": 199.0,
+    "q75": 229.25,
+    "max": 362.0
+  },
+  "test_observed_cycles": {
+    "count": 100,
+    "mean": 130.96,
+    "std": 53.5934791751852,
+    "min": 31.0,
+    "q25": 88.75,
+    "median": 133.5,
+    "q75": 164.25,
+    "max": 303.0
+  },
+  "test_true_rul": {
+    "count": 100,
+    "mean": 75.52,
+    "std": 41.76497009783111,
+    "min": 7.0,
+    "q25": 32.75,
+    "median": 86.0,
+    "q75": 112.25,
+    "max": 145.0
+  },
+  "test_implied_lifetime": {
+    "count": 100,
+    "mean": 206.48,
+    "std": 44.04187172051688,
+    "min": 141.0,
+    "q25": 174.75,
+    "median": 199.0,
+    "q75": 227.75,
+    "max": 341.0
+  },
+  "test_engines_with_fewer_cycles_than": {
+    "10": 0,
+    "20": 0,
+    "30": 0,
+    "40": 4,
+    "50": 7
+  },
+  "fraction_train_rows_at_cap": 0.3941156512044981,
+  "constant_columns": [
+    "op3",
+    "s1",
+    "s5",
+    "s10",
+    "s16",
+    "s18",
+    "s19"
+  ],
+  "active_sensors": [
+    "s2",
+    "s3",
+    "s4",
+    "s6",
+    "s7",
+    "s8",
+    "s9",
+    "s11",
+    "s12",
+    "s13",
+    "s14",
+    "s15",
+    "s17",
+    "s20",
+    "s21"
+  ],
+  "spike_threshold": {
+    "window": 11,
+    "z": 5.0
+  },
+  "spike_total_fraction": 8.724734622655227e-05,
+  "sensors_with_zero_mad": [
+    "s6"
+  ],
+  "high_correlation_threshold": 0.9,
+  "high_correlation_pairs": [],
+  "sensors_test_outside_train_range": {
+    "s2": 0.00015271838729383018,
+    "s3": 0.00022907758094074527,
+    "s8": 7.635919364691509e-05,
+    "s11": 0.00015271838729383018,
+    "s12": 0.00022907758094074527,
+    "s21": 0.00015271838729383018
+  },
+  "op_settings": {
+    "op1": {
+      "mean": -8.870146866366145e-06,
+      "std": 0.002187313449015146,
+      "min": -0.0087,
+      "max": 0.0087,
+      "nunique": 158
+    },
+    "op2": {
+      "mean": 2.3508312733265463e-06,
+      "std": 0.00029306212456614496,
+      "min": -0.0006,
+      "max": 0.0006,
+      "nunique": 13
+    },
+    "op3": {
+      "mean": 100.0,
+      "std": 0.0,
+      "min": 100.0,
+      "max": 100.0,
+      "nunique": 1
+    }
+  },
+  "figures": {
+    "lifetime": "figures/fd001/01_lifetime_distribution.png",
+    "rul_cap": "figures/fd001/02_rul_target_and_cap.png",
+    "test_truncation": "figures/fd001/03_test_truncation.png",
+    "trajectories": "figures/fd001/04_sensor_trajectories.png",
+    "relevance": "figures/fd001/05_sensor_trend_and_rul_correlation.png",
+    "initial_spread": "figures/fd001/06_initial_unit_spread.png",
+    "distributions": "figures/fd001/07_sensor_distributions.png",
+    "operating": "figures/fd001/08_operating_settings.png",
+    "correlation": "figures/fd001/09_sensor_correlation.png"
+  }
+}

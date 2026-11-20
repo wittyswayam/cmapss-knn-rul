@@ -1,0 +1,46 @@
+{
+  "subset": "FD004",
+  "fold": 4,
+  "part": "k200",
+  "rows": 256,
+  "seconds": 106.9,
+  "seed": 42,
+  "normalizations": [
+    "global",
+    "regime"
+  ],
+  "grid": {
+    "baseline": [
+      "none",
+      "causal"
+    ],
+    "normalization": [
+      "global",
+      "regime"
+    ],
+    "window": [
+      10,
+      30,
+      50,
+      75
+    ],
+    "history": [
+      "adaptive",
+      "pad_first"
+    ],
+    "metric": [
+      "euclidean",
+      "manhattan"
+    ],
+    "weights": [
+      "uniform",
+      "distance"
+    ],
+    "k": [
+      150,
+      200
+    ]
+  },
+  "config_hash": "144cf7c78ddefb27c5ef6aaca97d2597c3bc7b75c46ef5b03abd8b1a66fabf8a",
+  "completed_utc": "2026-11-17T23:27:35+00:00"
+}

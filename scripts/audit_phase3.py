@@ -1,0 +1,121 @@
+"""Independent audit of Phase 3 results (writes to results/phase3/audit/).
+
+    python scripts/audit_phase3.py recompute --subset FD002   # re-derive saved CV numbers through a different code path
+    python scripts/audit_phase3.py probe --subset FD001       # probe construction / leakage / cross-path checks
+    python scripts/audit_phase3.py provenance                 # regenerate reports+figures from saved outputs and compare
+Official test files are never read.
+"""
+
+from __future__ import annotations
+
+import _paths  # noqa: F401
+
+import argparse
+import json
+import logging
+import sys
+
+import numpy as np
+import pandas as pd
+
+from cmapss_knn.config import load_config
+from cmapss_knn.data.schema import SUBSET_NAMES
+from cmapss_knn.experiments import audit, phase3 as p3
+from cmapss_knn.experiments.phase3_commands import load_setup, plain
+from cmapss_knn.logging_utils import setup_logging
+
+logger = logging.getLogger("audit")
+
+
+def cmd_recompute(cfg, a) -> int:
+    out = cfg.paths.results_dir / "phase3" / "audit"
+    setup = load_setup(cfg, a.subset)
+    cv = p3.load_cv(cfg.paths.results_dir / "phase3" / "cv", a.subset, cfg.validation.n_folds)
+    sel = json.loads((cfg.paths.results_dir / "phase3" / f"selection_{a.subset.lower()}.json").read_text(encoding="utf-8"))
+    configs = {"selected by RMSE": sel["rmse_selected"]}
+    if sel["nasa_selected"] != sel["rmse_selected"] and {k: sel["nasa_selected"][k] for k in p3.CONFIG_KEYS} != {k: sel["rmse_selected"][k] for k in p3.CONFIG_KEYS}:
+        configs["selected by NASA"] = sel["nasa_selected"]
+    if sel["rmse_selected"]["normalization"] == "regime":
+        configs["same config, raw-sensor scaling"] = dict(sel["rmse_selected"], normalization="global")
+    result = {}
+    for label, c in configs.items():
+        c = {k: c[k] for k in p3.CONFIG_KEYS}
+        r = audit.recompute_cv(setup, cfg, cv, c)
+        result[label] = {"config": c, "per_fold": r, "max_abs_diff": {m: float(r[f"abs_diff_{m}"].max()) for m in ("rmse", "mae", "nasa")},
+                         "recomputed_mean_over_folds": {m: float(r[m].mean()) for m in ("rmse", "mae", "nasa")}, "saved_mean_over_folds": {m: float(r[f"saved_{m}"].mean()) for m in ("rmse", "mae", "nasa")}}
+        logger.info("%s | %s: max |recomputed - saved| rmse %.1e mae %.1e nasa %.1e; mean RMSE %.4f", a.subset, label, *result[label]["max_abs_diff"].values(), result[label]["recomputed_mean_over_folds"]["rmse"])
+    (out / f"recompute_{a.subset.lower()}.json").write_text(json.dumps(plain(result), indent=2), encoding="utf-8")
+    return 0
+
+
+def cmd_probe(cfg, a) -> int:
+    out = cfg.paths.results_dir / "phase3" / "audit"
+    from cmapss_knn.experiments import phase3_analysis as an
+
+    setup = load_setup(cfg, a.subset)
+    probe = an.load_probe(cfg.paths.results_dir / "phase3" / "probe", a.subset)
+    cv = p3.load_cv(cfg.paths.results_dir / "phase3" / "cv", a.subset, cfg.validation.n_folds)
+    from cmapss_knn.experiments.phase3 import regimes_for
+
+    norm_mode = "regime" if regimes_for(setup, cfg.seed).n_regimes_ > 1 else "global"
+    res = {"structure": audit.probe_structure(setup, probe)}
+    cmp_ = audit.probe_vs_sweep_stress(probe, cv, norm_mode, cfg.phase3.probe)
+    res["healthy_start_vs_sweep_stress"] = {"comparisons": len(cmp_), "max_abs_diff": float(cmp_["abs_diff"].max())}
+    logger.info("%s probe: structure %s; healthy-start probes vs sweep stress points: %d comparisons, max |diff| %.2e", a.subset, res["structure"], len(cmp_), res["healthy_start_vs_sweep_stress"]["max_abs_diff"])
+    if a.subset == "FD001":  # the full-history reference refits models; run it on the cheap single-regime subset
+        ref = audit.full_history_reference(setup, cfg, probe)
+        ref["probe_err"], ref["full_err"] = ref["pred"] - ref["true_rul_clip"], ref["full_history_pred"] - ref["true_rul_clip"]
+        ref["gap"] = (ref["pred"] - ref["full_history_pred"]).abs()
+        res["healthy_start_max_abs_gap_probe_vs_full_history"] = float(ref[ref["stage"] == "healthy_start"]["gap"].max())
+        tab = ref.groupby(["stage", "n_obs", "baseline", "window"]).apply(lambda g: pd.Series({"n": len(g), "probe_rmse": float(np.sqrt((g["probe_err"] ** 2).mean())), "full_history_rmse": float(np.sqrt((g["full_err"] ** 2).mean()))}), include_groups=False).reset_index()
+        tab.to_csv(out / "probe_vs_full_history_fd001.csv", index=False)
+        logger.info("FD001 healthy-start max |probe - full-history prediction| = %.2e", res["healthy_start_max_abs_gap_probe_vs_full_history"])
+    (out / f"probe_{a.subset.lower()}.json").write_text(json.dumps(plain(res), indent=2), encoding="utf-8")
+    return 0
+
+
+def cmd_summary(cfg, a) -> int:
+    """Write results/phase3/audit/audit_summary.md from the saved audit outputs (numbers are read, not typed)."""
+    base = cfg.paths.results_dir / "phase3"
+    out = base / "audit"
+    L = ["# Phase 3 audit summary (generated)", "", "Generated by `scripts/audit_phase3.py summary` from files in `results/phase3/audit/` and `results/phase3/regimes/`.", "", "## Regime detector", ""]
+    L += ["| subset | selected regimes | k with highest silhouette | highest silhouette | distinct rounded settings | ARI vs detector | regimes per CV fold |", "|---|---|---|---|---|---|---|"]
+    for n in SUBSET_NAMES:
+        d = json.loads((base / "regimes" / f"{n.lower()}_detector.json").read_text())
+        L.append(f"| {n} | {d['selected_n_regimes']} | {d['k_with_highest_silhouette']} | {d['highest_silhouette']:.4f} | {d['independent_check']['distinct_rounded_operating_settings']} | {d['independent_check']['adjusted_rand_index_vs_detector']:.3f} | {[f['n_regimes'] for f in d['per_fold']]} |")
+    L += ["", "## Independent recomputation of CV metrics (pipeline code path + naive reference metrics)", "", "| subset | model | max abs diff RMSE | MAE | NASA | recomputed mean RMSE | saved mean RMSE |", "|---|---|---|---|---|---|---|"]
+    for n in SUBSET_NAMES:
+        r = json.loads((out / f"recompute_{n.lower()}.json").read_text())
+        for label, v in r.items():
+            L.append(f"| {n} | {label} | {v['max_abs_diff']['rmse']:.1e} | {v['max_abs_diff']['mae']:.1e} | {v['max_abs_diff']['nasa']:.1e} | {v['recomputed_mean_over_folds']['rmse']:.4f} | {v['saved_mean_over_folds']['rmse']:.4f} |")
+    L += ["", "## Short-history probe checks", ""]
+    for n in ("FD001", "FD002"):
+        r = json.loads((out / f"probe_{n.lower()}.json").read_text())
+        L.append(f"- {n}: engines checked {r['structure']['engines_checked']}, of which in training or the wrong fold: {r['structure']['engines_in_training_or_wrong_fold']}; healthy-start probes vs sweep stress points: {r['healthy_start_vs_sweep_stress']['comparisons']} comparisons, max abs diff {r['healthy_start_vs_sweep_stress']['max_abs_diff']:.1e}"
+                 + (f"; healthy-start probe vs full-history prediction, max abs gap {r['healthy_start_max_abs_gap_probe_vs_full_history']:.1e}" if "healthy_start_max_abs_gap_probe_vs_full_history" in r else ""))
+    pv = json.loads((out / "provenance.json").read_text())
+    L += ["", "## Provenance", "", f"- Regeneration from experiment outputs only: {pv['regeneration']['files_compared']} derived files compared, all identical: {pv['regeneration']['all_identical']}",
+          f"- Independent recomputation of report tables: {pv['independent_table_recompute']['values_compared']} values compared, all match: {pv['independent_table_recompute']['all_match']}",
+          f"- Unreviewed numeric literals in report/figure code: {len(pv['unreviewed_numeric_literals'])}", ""]
+    (out / "audit_summary.md").write_text("\n".join(L), encoding="utf-8")
+    return 0
+
+
+def main() -> int:
+    parser = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
+    sub = parser.add_subparsers(dest="cmd", required=True)
+    for n in ("recompute", "probe"):
+        s = sub.add_parser(n); s.add_argument("--subset", required=True, choices=SUBSET_NAMES)
+    sub.add_parser("provenance")
+    sub.add_parser("summary")
+    a = parser.parse_args()
+    cfg = load_config()
+    setup_logging(cfg.log_level, cfg.paths.logs_dir / f"audit_{a.cmd}.log")
+    if a.cmd == "provenance":
+        from cmapss_knn.experiments import provenance
+        return provenance.run(cfg)
+    return {"recompute": cmd_recompute, "probe": cmd_probe, "summary": cmd_summary}[a.cmd](cfg, a)
+
+
+if __name__ == "__main__":
+    sys.exit(main())

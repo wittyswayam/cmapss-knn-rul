@@ -1,0 +1,10 @@
+{
+  "structure": {
+    "engines_checked": 208,
+    "engines_in_training_or_wrong_fold": 0
+  },
+  "healthy_start_vs_sweep_stress": {
+    "comparisons": 80,
+    "max_abs_diff": 4.218847493575595e-15
+  }
+}

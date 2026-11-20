@@ -1,0 +1,64 @@
+09:38:52 START p2_sweep
+09:43:51 END p2_sweep rc=0
+09:43:51 COMPARE results/phase2/cv_results_fd001.csv
+1/1 files match
+09:43:52 START p2_stage2
+09:48:55 END p2_stage2 rc=0
+09:48:55 START p2_report
+09:48:55 END p2_report rc=0
+09:48:55 COMPARE results/phase2/*.csv results/phase2/*.json results/phase2/*.md figures/fd001/1[0-4]_*.png
+22/23 files match  <-- DIFFERENCES: | results/phase2/FD001_phase2_report.md | DIFFERENT | bytes differ |
+09:48:56 START p3_sweep_fd001
+09:49:55 END p3_sweep_fd001 rc=0
+09:49:55 START p3_sweep_fd003
+09:51:09 END p3_sweep_fd003 rc=0
+09:51:09 START p3_sweep_fd002
+09:52:53 END p3_sweep_fd002 rc=0
+09:52:53 START p3_sweep_fd004
+09:54:58 END p3_sweep_fd004 rc=0
+09:54:58 COMPARE results/phase3/cv/fd001_*.csv results/phase3/cv/fd003_*.csv results/phase3/cv/fd002_fold0.csv results/phase3/cv/fd004_fold0.csv
+12/12 files match
+09:54:58 START p3_regimes
+09:56:08 END p3_regimes rc=0
+09:56:08 COMPARE results/phase3/regimes/*.json
+4/4 files match
+09:56:08 START p3_analyze
+09:56:36 END p3_analyze rc=0
+09:56:36 START p3_holdout_FD002
+09:56:56 END p3_holdout_FD002 rc=0
+09:56:56 START p3_holdout_FD003
+09:57:01 END p3_holdout_FD003 rc=0
+09:57:01 START p3_holdout_FD004
+09:57:34 END p3_holdout_FD004 rc=0
+09:57:34 START p3_faultmodes
+09:59:08 END p3_faultmodes rc=0
+09:59:08 START p3_probe_fd001
+10:01:47 END p3_probe_fd001 rc=0
+10:01:47 START p3_probe_fd002
+10:04:58 END p3_probe_fd002 rc=0
+10:04:58 START p3_report
+10:05:01 END p3_report rc=0
+10:05:01 COMPARE results/phase3/cv_summary_*.csv results/phase3/selection_*.json results/phase3/phase3_analysis.json results/phase3/cross_subset_cv_summary.csv results/phase3/regime*.csv results/phase3/holdout_fd00*.csv results/phase3/fault_mode_*.csv results/phase3/probe/*.csv results/phase3/probe_summary_*.csv results/phase3/phase3_report.md figures/phase3/*.png
+38/39 files match  <-- DIFFERENCES: | results/phase3/phase3_report.md | DIFFERENT | bytes differ |
+10:05:03 START ext_fd002
+19:30:36 START ext_fd002
+19:32:40 END ext_fd002 rc=0
+19:32:40 START ext_fd004
+19:35:06 END ext_fd004 rc=0
+19:35:06 START ext_analyze
+19:35:09 END ext_analyze rc=0
+19:35:09 COMPARE results/phase3_extended/cv/fd00[24]_fold0_* results/phase3_extended/*.csv results/phase3_extended/*.json results/phase3_extended/*.md figures/phase3_extended/*.png
+16/16 files match
+19:35:10 START audit_rec_fd001
+19:35:18 END audit_rec_fd001 rc=0
+19:35:18 START audit_rec_fd003
+19:35:29 END audit_rec_fd003 rc=0
+19:35:29 START audit_probe_fd001
+19:35:55 END audit_probe_fd001 rc=0
+19:35:55 START audit_provenance
+19:36:22 END audit_provenance rc=0
+19:36:22 START audit_summary
+19:36:24 END audit_summary rc=0
+19:36:24 COMPARE results/phase3/audit/recompute_fd001.json results/phase3/audit/recompute_fd003.json results/phase3/audit/probe_fd001.json results/phase3/audit/provenance.json results/phase3/audit/audit_summary.md results/phase3/audit/probe_vs_full_history_fd001.csv
+6/6 files match
+ALLDONE

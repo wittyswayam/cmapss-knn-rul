@@ -1,0 +1,13 @@
+{
+  "regeneration": {
+    "files_compared": 32,
+    "all_identical": true,
+    "differences": []
+  },
+  "independent_table_recompute": {
+    "values_compared": 183,
+    "all_match": true,
+    "mismatches": []
+  },
+  "unreviewed_numeric_literals": []
+}

@@ -1,0 +1,5 @@
+case,configurations,max |pred diff|,configs with any pred diff > 1e-9,min share of identical neighbour sets,max |distance diff|
+continuous random data (no ties),32,2.842170943040401e-14,0,1.0,1.7763568394002505e-15
+5 duplicate training points + coinciding query,24,10.0,6,0.9523809523809523,6.344952991829689e-11
+integer lattice (many tied distances),48,49.136930495999735,31,0.25,0.0
+real FD001 scaled features (one CV fold),8,1.1368683772161603e-13,0,0.9363295880149812,4.618527782440651e-14

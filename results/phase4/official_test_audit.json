@@ -1,0 +1,47 @@
+{
+  "FD001:primary": {
+    "evaluations": 1,
+    "log": [
+      {
+        "time_utc": "2026-11-19T22:52:19+00:00",
+        "note": "first evaluation"
+      }
+    ]
+  },
+  "FD003:primary": {
+    "evaluations": 1,
+    "log": [
+      {
+        "time_utc": "2026-11-19T22:52:23+00:00",
+        "note": "first evaluation"
+      }
+    ]
+  },
+  "FD002:primary": {
+    "evaluations": 1,
+    "log": [
+      {
+        "time_utc": "2026-11-19T22:52:43+00:00",
+        "note": "first evaluation"
+      }
+    ]
+  },
+  "FD002:nasa_secondary": {
+    "evaluations": 1,
+    "log": [
+      {
+        "time_utc": "2026-11-19T22:52:58+00:00",
+        "note": "first evaluation"
+      }
+    ]
+  },
+  "FD004:primary": {
+    "evaluations": 1,
+    "log": [
+      {
+        "time_utc": "2026-11-19T22:53:14+00:00",
+        "note": "first evaluation"
+      }
+    ]
+  }
+}

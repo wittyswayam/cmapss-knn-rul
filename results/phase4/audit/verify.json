@@ -1,0 +1,62 @@
+{
+  "integrity": {
+    "frozen_hash_and_sources_verified": true,
+    "chunks_complete": 5,
+    "labels_read_flags": [
+      false
+    ],
+    "evaluations_per_chunk": {
+      "FD001:primary": 1,
+      "FD003:primary": 1,
+      "FD002:primary": 1,
+      "FD002:nasa_secondary": 1,
+      "FD004:primary": 1
+    },
+    "max_scratch_vs_sklearn_diff": 5.684341886080802e-14
+  },
+  "independent_recompute": [
+    {
+      "chunk": "FD001:primary",
+      "engines": 100,
+      "max_abs_diff": 1.7763568394002505e-15,
+      "per_engine_labels_match_label_file": true,
+      "per_engine_predictions_match_locked": false
+    },
+    {
+      "chunk": "FD002:primary",
+      "engines": 259,
+      "max_abs_diff": 3.637978807091713e-12,
+      "per_engine_labels_match_label_file": true,
+      "per_engine_predictions_match_locked": false
+    },
+    {
+      "chunk": "FD002:nasa_secondary",
+      "engines": 259,
+      "max_abs_diff": 3.552713678800501e-15,
+      "per_engine_labels_match_label_file": true,
+      "per_engine_predictions_match_locked": false
+    },
+    {
+      "chunk": "FD003:primary",
+      "engines": 100,
+      "max_abs_diff": 2.2737367544323206e-13,
+      "per_engine_labels_match_label_file": true,
+      "per_engine_predictions_match_locked": true
+    },
+    {
+      "chunk": "FD004:primary",
+      "engines": 248,
+      "max_abs_diff": 0.0,
+      "per_engine_labels_match_label_file": true,
+      "per_engine_predictions_match_locked": false
+    }
+  ],
+  "report_table_values_checked": 30,
+  "report_table_all_match": true,
+  "regeneration": {
+    "files_compared": 15,
+    "all_identical": true,
+    "differences": []
+  },
+  "unreviewed_numeric_literals": []
+}

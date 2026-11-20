@@ -1,0 +1,42 @@
+{
+  "FD002": {
+    "configurations": 1440,
+    "duplicate_config_rows": 0,
+    "overlap_rows_compared": 640,
+    "overlap_max_abs_diff_vs_original": 0.0,
+    "changed_fields_vs_original_selection": [],
+    "new_best_window": 75,
+    "new_best_k": 100,
+    "largest_window_in_grid": 100,
+    "largest_k_in_grid": 200,
+    "selection": {
+      "same_configuration": false,
+      "spearman_rmse_vs_nasa_over_configs": 0.9591318564164688,
+      "top10_overlap": 8,
+      "rmse_of_nasa_selected_minus_rmse_selected": 0.07974143193945693,
+      "nasa_of_rmse_selected_minus_nasa_selected": 0.09042599004325647,
+      "folds_where_rmse_selected_has_lower_rmse": 3,
+      "folds_where_nasa_selected_has_lower_nasa": 4
+    }
+  },
+  "FD004": {
+    "configurations": 1440,
+    "duplicate_config_rows": 0,
+    "overlap_rows_compared": 640,
+    "overlap_max_abs_diff_vs_original": 0.0,
+    "changed_fields_vs_original_selection": [],
+    "new_best_window": 75,
+    "new_best_k": 150,
+    "largest_window_in_grid": 100,
+    "largest_k_in_grid": 200,
+    "selection": {
+      "same_configuration": false,
+      "spearman_rmse_vs_nasa_over_configs": 0.9659709318596958,
+      "top10_overlap": 0,
+      "rmse_of_nasa_selected_minus_rmse_selected": 0.2730966179827501,
+      "nasa_of_rmse_selected_minus_nasa_selected": 1.1201952488556302,
+      "folds_where_rmse_selected_has_lower_rmse": 5,
+      "folds_where_nasa_selected_has_lower_nasa": 1
+    }
+  }
+}

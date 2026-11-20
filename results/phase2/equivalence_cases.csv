@@ -1,0 +1,113 @@
+case,metric,weights,sklearn_algorithm,k,n_queries,max_abs_pred_diff,n_pred_diff_gt_1e-9,share_same_neighbour_set,max_abs_dist_diff
+continuous random data (no ties),euclidean,uniform,brute,1,150,0.0,0,1.0,1.7763568394002505e-15
+continuous random data (no ties),euclidean,uniform,kd_tree,1,150,0.0,0,1.0,0.0
+continuous random data (no ties),euclidean,distance,brute,1,150,2.842170943040401e-14,0,1.0,1.7763568394002505e-15
+continuous random data (no ties),euclidean,distance,kd_tree,1,150,0.0,0,1.0,0.0
+continuous random data (no ties),manhattan,uniform,brute,1,150,0.0,0,1.0,0.0
+continuous random data (no ties),manhattan,uniform,kd_tree,1,150,0.0,0,1.0,0.0
+continuous random data (no ties),manhattan,distance,brute,1,150,0.0,0,1.0,0.0
+continuous random data (no ties),manhattan,distance,kd_tree,1,150,0.0,0,1.0,0.0
+continuous random data (no ties),euclidean,uniform,brute,3,150,0.0,0,1.0,1.7763568394002505e-15
+continuous random data (no ties),euclidean,uniform,kd_tree,3,150,0.0,0,1.0,0.0
+continuous random data (no ties),euclidean,distance,brute,3,150,2.842170943040401e-14,0,1.0,1.7763568394002505e-15
+continuous random data (no ties),euclidean,distance,kd_tree,3,150,0.0,0,1.0,0.0
+continuous random data (no ties),manhattan,uniform,brute,3,150,0.0,0,1.0,0.0
+continuous random data (no ties),manhattan,uniform,kd_tree,3,150,0.0,0,1.0,0.0
+continuous random data (no ties),manhattan,distance,brute,3,150,0.0,0,1.0,0.0
+continuous random data (no ties),manhattan,distance,kd_tree,3,150,0.0,0,1.0,0.0
+continuous random data (no ties),euclidean,uniform,brute,10,150,0.0,0,1.0,1.7763568394002505e-15
+continuous random data (no ties),euclidean,uniform,kd_tree,10,150,0.0,0,1.0,0.0
+continuous random data (no ties),euclidean,distance,brute,10,150,2.842170943040401e-14,0,1.0,1.7763568394002505e-15
+continuous random data (no ties),euclidean,distance,kd_tree,10,150,0.0,0,1.0,0.0
+continuous random data (no ties),manhattan,uniform,brute,10,150,0.0,0,1.0,0.0
+continuous random data (no ties),manhattan,uniform,kd_tree,10,150,0.0,0,1.0,0.0
+continuous random data (no ties),manhattan,distance,brute,10,150,0.0,0,1.0,0.0
+continuous random data (no ties),manhattan,distance,kd_tree,10,150,0.0,0,1.0,0.0
+continuous random data (no ties),euclidean,uniform,brute,50,150,0.0,0,1.0,1.7763568394002505e-15
+continuous random data (no ties),euclidean,uniform,kd_tree,50,150,0.0,0,1.0,0.0
+continuous random data (no ties),euclidean,distance,brute,50,150,2.1316282072803006e-14,0,1.0,1.7763568394002505e-15
+continuous random data (no ties),euclidean,distance,kd_tree,50,150,0.0,0,1.0,0.0
+continuous random data (no ties),manhattan,uniform,brute,50,150,0.0,0,1.0,0.0
+continuous random data (no ties),manhattan,uniform,kd_tree,50,150,0.0,0,1.0,0.0
+continuous random data (no ties),manhattan,distance,brute,50,150,0.0,0,1.0,0.0
+continuous random data (no ties),manhattan,distance,kd_tree,50,150,0.0,0,1.0,0.0
+5 duplicate training points + coinciding query,euclidean,uniform,brute,3,21,0.0,0,1.0,6.344952991829689e-11
+5 duplicate training points + coinciding query,euclidean,uniform,kd_tree,3,21,10.0,1,0.9523809523809523,0.0
+5 duplicate training points + coinciding query,euclidean,distance,brute,3,21,9.988383453674032e-10,0,1.0,6.344952991829689e-11
+5 duplicate training points + coinciding query,euclidean,distance,kd_tree,3,21,10.0,1,0.9523809523809523,0.0
+5 duplicate training points + coinciding query,manhattan,uniform,brute,3,21,0.0,0,1.0,0.0
+5 duplicate training points + coinciding query,manhattan,uniform,kd_tree,3,21,10.0,1,0.9523809523809523,0.0
+5 duplicate training points + coinciding query,manhattan,distance,brute,3,21,0.0,0,1.0,0.0
+5 duplicate training points + coinciding query,manhattan,distance,kd_tree,3,21,10.0,1,0.9523809523809523,0.0
+5 duplicate training points + coinciding query,euclidean,uniform,brute,5,21,0.0,0,1.0,6.344952991829689e-11
+5 duplicate training points + coinciding query,euclidean,uniform,kd_tree,5,21,0.0,0,1.0,0.0
+5 duplicate training points + coinciding query,euclidean,distance,brute,5,21,1.2045902053614554e-09,3,1.0,6.344952991829689e-11
+5 duplicate training points + coinciding query,euclidean,distance,kd_tree,5,21,0.0,0,1.0,0.0
+5 duplicate training points + coinciding query,manhattan,uniform,brute,5,21,0.0,0,1.0,0.0
+5 duplicate training points + coinciding query,manhattan,uniform,kd_tree,5,21,0.0,0,1.0,0.0
+5 duplicate training points + coinciding query,manhattan,distance,brute,5,21,0.0,0,1.0,0.0
+5 duplicate training points + coinciding query,manhattan,distance,kd_tree,5,21,0.0,0,1.0,0.0
+5 duplicate training points + coinciding query,euclidean,uniform,brute,8,21,0.0,0,1.0,6.344952991829689e-11
+5 duplicate training points + coinciding query,euclidean,uniform,kd_tree,8,21,0.0,0,1.0,0.0
+5 duplicate training points + coinciding query,euclidean,distance,brute,8,21,1.8089139075527783e-09,3,1.0,6.344952991829689e-11
+5 duplicate training points + coinciding query,euclidean,distance,kd_tree,8,21,0.0,0,1.0,0.0
+5 duplicate training points + coinciding query,manhattan,uniform,brute,8,21,0.0,0,1.0,0.0
+5 duplicate training points + coinciding query,manhattan,uniform,kd_tree,8,21,0.0,0,1.0,0.0
+5 duplicate training points + coinciding query,manhattan,distance,brute,8,21,0.0,0,1.0,0.0
+5 duplicate training points + coinciding query,manhattan,distance,kd_tree,8,21,0.0,0,1.0,0.0
+integer lattice (many tied distances),euclidean,uniform,brute,1,12,0.0,0,1.0,0.0
+integer lattice (many tied distances),euclidean,uniform,kd_tree,1,12,49.136930495999735,3,0.75,0.0
+integer lattice (many tied distances),euclidean,distance,brute,1,12,0.0,0,1.0,0.0
+integer lattice (many tied distances),euclidean,distance,kd_tree,1,12,49.136930495999735,3,0.75,0.0
+integer lattice (many tied distances),manhattan,uniform,brute,1,12,0.0,0,1.0,0.0
+integer lattice (many tied distances),manhattan,uniform,kd_tree,1,12,49.136930495999735,3,0.75,0.0
+integer lattice (many tied distances),manhattan,distance,brute,1,12,0.0,0,1.0,0.0
+integer lattice (many tied distances),manhattan,distance,kd_tree,1,12,49.136930495999735,3,0.75,0.0
+integer lattice (many tied distances),euclidean,uniform,brute,2,12,0.0,0,1.0,0.0
+integer lattice (many tied distances),euclidean,uniform,kd_tree,2,12,43.922574487404674,5,0.5833333333333334,0.0
+integer lattice (many tied distances),euclidean,distance,brute,2,12,0.0,0,1.0,0.0
+integer lattice (many tied distances),euclidean,distance,kd_tree,2,12,14.957359605182617,2,0.5833333333333334,0.0
+integer lattice (many tied distances),manhattan,uniform,brute,2,12,0.0,0,1.0,0.0
+integer lattice (many tied distances),manhattan,uniform,kd_tree,2,12,43.922574487404674,5,0.5833333333333334,0.0
+integer lattice (many tied distances),manhattan,distance,brute,2,12,0.0,0,1.0,0.0
+integer lattice (many tied distances),manhattan,distance,kd_tree,2,12,14.957359605182617,2,0.5833333333333334,0.0
+integer lattice (many tied distances),euclidean,uniform,brute,3,12,1.4210854715202004e-14,0,1.0,0.0
+integer lattice (many tied distances),euclidean,uniform,kd_tree,3,12,27.18122453409103,9,0.25,0.0
+integer lattice (many tied distances),euclidean,distance,brute,3,12,7.105427357601002e-15,0,1.0,0.0
+integer lattice (many tied distances),euclidean,distance,kd_tree,3,12,16.37897683199992,5,0.25,0.0
+integer lattice (many tied distances),manhattan,uniform,brute,3,12,27.18122453409103,4,0.6666666666666666,0.0
+integer lattice (many tied distances),manhattan,uniform,kd_tree,3,12,27.18122453409103,9,0.25,0.0
+integer lattice (many tied distances),manhattan,distance,brute,3,12,11.649096228896163,4,0.6666666666666666,0.0
+integer lattice (many tied distances),manhattan,distance,kd_tree,3,12,16.378976831999914,5,0.25,0.0
+integer lattice (many tied distances),euclidean,uniform,brute,4,12,0.0,0,1.0,0.0
+integer lattice (many tied distances),euclidean,uniform,kd_tree,4,12,20.847786977632893,5,0.5833333333333334,0.0
+integer lattice (many tied distances),euclidean,distance,brute,4,12,0.0,0,1.0,0.0
+integer lattice (many tied distances),euclidean,distance,kd_tree,4,12,5.336370057958057,2,0.5833333333333334,0.0
+integer lattice (many tied distances),manhattan,uniform,brute,4,12,12.1799655278108,4,0.6666666666666666,0.0
+integer lattice (many tied distances),manhattan,uniform,kd_tree,4,12,21.961287243702337,6,0.5,0.0
+integer lattice (many tied distances),manhattan,distance,brute,4,12,6.089982763905404,4,0.6666666666666666,0.0
+integer lattice (many tied distances),manhattan,distance,kd_tree,4,12,10.980643621851172,3,0.5,0.0
+integer lattice (many tied distances),euclidean,uniform,brute,8,12,6.042842983130797,2,0.8333333333333334,0.0
+integer lattice (many tied distances),euclidean,uniform,kd_tree,8,12,12.272156463647505,7,0.4166666666666667,0.0
+integer lattice (many tied distances),euclidean,distance,brute,8,12,3.7346823522536354,2,0.8333333333333334,0.0
+integer lattice (many tied distances),euclidean,distance,kd_tree,8,12,7.584609809790862,4,0.4166666666666667,0.0
+integer lattice (many tied distances),manhattan,uniform,brute,8,12,9.971747592203819,6,0.5,0.0
+integer lattice (many tied distances),manhattan,uniform,kd_tree,8,12,12.272156463647505,8,0.3333333333333333,0.0
+integer lattice (many tied distances),manhattan,distance,brute,8,12,6.647831728135877,4,0.5,0.0
+integer lattice (many tied distances),manhattan,distance,kd_tree,8,12,8.181437642431668,4,0.3333333333333333,0.0
+integer lattice (many tied distances),euclidean,uniform,brute,12,12,2.1316282072803006e-14,0,1.0,0.0
+integer lattice (many tied distances),euclidean,uniform,kd_tree,12,12,5.166583120312616,4,0.6666666666666666,0.0
+integer lattice (many tied distances),euclidean,distance,brute,12,12,1.4210854715202004e-14,0,1.0,0.0
+integer lattice (many tied distances),euclidean,distance,kd_tree,12,12,1.4210854715202004e-14,0,0.6666666666666666,0.0
+integer lattice (many tied distances),manhattan,uniform,brute,12,12,1.4210854715202004e-14,0,1.0,0.0
+integer lattice (many tied distances),manhattan,uniform,kd_tree,12,12,5.68461783794735,8,0.3333333333333333,0.0
+integer lattice (many tied distances),manhattan,distance,brute,12,12,1.4210854715202004e-14,0,1.0,0.0
+integer lattice (many tied distances),manhattan,distance,kd_tree,12,12,2.8423089189736714,4,0.3333333333333333,0.0
+real FD001 scaled features (one CV fold),euclidean,uniform,brute,5,534,0.0,0,0.9868913857677902,4.618527782440651e-14
+real FD001 scaled features (one CV fold),euclidean,distance,brute,5,534,5.684341886080802e-14,0,0.9868913857677902,4.618527782440651e-14
+real FD001 scaled features (one CV fold),manhattan,uniform,brute,5,534,0.0,0,0.9868913857677902,0.0
+real FD001 scaled features (one CV fold),manhattan,distance,brute,5,534,0.0,0,0.9868913857677902,0.0
+real FD001 scaled features (one CV fold),euclidean,uniform,brute,20,534,0.0,0,0.949438202247191,4.618527782440651e-14
+real FD001 scaled features (one CV fold),euclidean,distance,brute,20,534,1.1368683772161603e-13,0,0.949438202247191,4.618527782440651e-14
+real FD001 scaled features (one CV fold),manhattan,uniform,brute,20,534,0.0,0,0.9363295880149812,0.0
+real FD001 scaled features (one CV fold),manhattan,distance,brute,20,534,0.0,0,0.9363295880149812,0.0

@@ -1,0 +1,99 @@
+{
+  "subset": "FD004",
+  "seed": 42,
+  "rows_used": 48731,
+  "uses_test_data": false,
+  "rule": {
+    "k_range": [
+      2,
+      10
+    ],
+    "accept_best_k_if_silhouette_at_least": 0.9,
+    "silhouette_sample_size": 5000
+  },
+  "selected_n_regimes": 6,
+  "k_with_highest_silhouette": 6,
+  "highest_silhouette": 0.9970894594721074,
+  "silhouette_by_k": {
+    "2": 0.6135468043161317,
+    "3": 0.8026886069473872,
+    "4": 0.8508615302264454,
+    "5": 0.9280656834033232,
+    "6": 0.9970894594721074,
+    "7": 0.9367035528784003,
+    "8": 0.8936347292513223,
+    "9": 0.8595572705869509,
+    "10": 0.8193196470939487
+  },
+  "rows_per_regime": [
+    12195,
+    7380,
+    7276,
+    7250,
+    7331,
+    7299
+  ],
+  "centres_original_units": [
+    {
+      "op1": 42.003,
+      "op2": 0.8405,
+      "op3": 100.0
+    },
+    {
+      "op1": 10.003,
+      "op2": 0.2505,
+      "op3": 100.0
+    },
+    {
+      "op1": 25.0031,
+      "op2": 0.6205,
+      "op3": 60.0
+    },
+    {
+      "op1": 20.003,
+      "op2": 0.7005,
+      "op3": 100.0
+    },
+    {
+      "op1": 0.0015,
+      "op2": 0.0005,
+      "op3": 100.0
+    },
+    {
+      "op1": 35.003,
+      "op2": 0.8405,
+      "op3": 100.0
+    }
+  ],
+  "independent_check": {
+    "distinct_rounded_operating_settings": 6,
+    "adjusted_rand_index_vs_detector": 1.0
+  },
+  "per_fold": [
+    {
+      "fold": 0,
+      "n_regimes": 6,
+      "ari_vs_full_tuning_fit": 1.0
+    },
+    {
+      "fold": 1,
+      "n_regimes": 6,
+      "ari_vs_full_tuning_fit": 1.0
+    },
+    {
+      "fold": 2,
+      "n_regimes": 6,
+      "ari_vs_full_tuning_fit": 1.0
+    },
+    {
+      "fold": 3,
+      "n_regimes": 6,
+      "ari_vs_full_tuning_fit": 1.0
+    },
+    {
+      "fold": 4,
+      "n_regimes": 6,
+      "ari_vs_full_tuning_fit": 1.0
+    }
+  ]
+}
